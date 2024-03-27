@@ -1,0 +1,60 @@
+<nav
+  aria-label="Page navigation example"
+  class="d-flex justify-content-center pt-3"
+>
+  <ul class="pagination">
+    <li class="page-item">
+      <button
+        class="page-link"
+        aria-label="Previous"
+        (click)="firstPage()"
+      >
+        <i class="fa-solid fa-angles-left" style="color: #0d6efd;"></i>
+      </button>
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link"
+        (click)="prevPage()"
+      >
+        <i class="fa-solid fa-angle-left" style="color: #0d6efd;"></i>
+      </button>
+    </li>
+    <li
+      class="page-item"
+      *ngFor="let page of pages"
+    >
+      <ng-container *ngIf="page !== '...'; else space">
+        <button
+          (click)="goToPage(page)"
+          class="page-link"
+          [ngClass]="{'active': page == currentPage }"
+        >
+          {{ page }}
+        </button>
+      </ng-container>
+      <ng-template #space>
+        <button class="page-link">
+          {{ page }}
+        </button>
+      </ng-template>
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link"
+        (click)="nextPage()"
+      >
+        <i class="fa-solid fa-angle-right" style="color: #0d6efd;"></i>
+      </button>
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link"
+        aria-label="Next"
+        (click)="lastPage()"
+      >
+        <i class="fa-solid fa-angles-right" style="color: #0d6efd;"></i>
+      </button>
+    </li>
+  </ul>
+</nav>

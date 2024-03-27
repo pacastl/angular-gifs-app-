@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Gif } from '../../interfaces/gifs.interfaces';
+import { Gif, Pagination } from '../../interfaces/gifs.interfaces';
 
 @Component({
   selector: 'gifs-card-list',
@@ -8,5 +8,9 @@ import { Gif } from '../../interfaces/gifs.interfaces';
 export class CardListComponent {
 
   @Input()
-  public gifs: Gif[]=[]
+  public gifs: Gif[]=[];
+
+  @Input()
+  public pagination!: Pagination;
+
 }

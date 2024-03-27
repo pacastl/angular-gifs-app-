@@ -1,12 +1,21 @@
-<div class="row">
-
-
+<!-- <div class="row">
   <gifs-card
   *ngFor="let gif of gifs"
   [gif]="gif"
   class="col-md-3 col-sm-6">
 </gifs-card>
 
+</div> -->
 
-
+<div class="row">
+  <gifs-card
+    *ngFor="let gif of gifs"
+    [gif]="gif"
+    class="col-sm-6 col-md-4 col-xxl-3"
+  ></gifs-card>
+  <ng-template [ngIf]="gifs.length">
+    <shared-pagination
+      [pagination]="pagination"
+    ></shared-pagination>
+  </ng-template>
 </div>

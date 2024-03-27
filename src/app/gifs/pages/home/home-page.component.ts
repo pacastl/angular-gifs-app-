@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { GifsService } from '../../services/gifs.service';
-import { Gif } from '../../interfaces/gifs.interfaces';
+import { Gif, Pagination } from '../../interfaces/gifs.interfaces';
 
 @Component({
   selector: 'gifs-home-page',
@@ -8,10 +8,14 @@ import { Gif } from '../../interfaces/gifs.interfaces';
 })
 export class HomePageComponent {
 
-  constructor(private gifService: GifsService) { }
+  constructor(private gifsService: GifsService) { }
 
   get gifs(): Gif[] {
-    return this.gifService.gifList;
+    return this.gifsService.gifList;
   }
 
+  // Añadido
+  get pagination(): Pagination {
+    return this.gifsService.pagination
+  }
 }

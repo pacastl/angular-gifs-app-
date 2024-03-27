@@ -1,0 +1,10 @@
+#home {
+  padding: 12px;
+}
+
+@media (min-width: 768px) {
+  #home {
+    padding-left: 260px;
+    padding-right: 20px ;
+  }
+}

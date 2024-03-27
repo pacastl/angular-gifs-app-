@@ -1,12 +1,59 @@
-<div class="bg-dark border-right p-3" id=sidebar>
+<div class="bg-dark">
+  <div class="p-1" id="smallScreen">
+    <button class="btn" (click)="menu()">
+      <i
+        *ngIf="!show; else close"
+        class="fa-solid fa-bars"
+        style="color: #ffffff"
+      ></i>
+      <ng-template #close>
+        <i class="fa-solid fa-x" style="color: #ffffff"></i>
+      </ng-template>
+    </button>
+  </div>
+  <div
+    class="bg-dark border-right p-3"
+    [ngStyle]="{ display: show ? '' : 'none' }"
+    id="sidebar"
+  >
+    <div class="d-flex gap-2 justify-content-between">
+      <h3 class="text-light">GifsApp</h3>
+      <div class="d-flex align-self-center">
+        <span
+          class="badge"
+          [ngClass]="{'text-bg-success': tags.length < 10, 'text-bg-danger': tags.length == 10}"
+        >
+          {{ tags.length }}/10
+        </span>
+      </div>
+    </div>
+    <hr class="text-white" />
+    <div class="list-group list-reset">
+      <ng-container *ngFor="let tag of tags">
+        <div class="d-flex border-0">
+          <button
+            class="list-group-item list-group-item-action border-0"
+            [ngClass]="{ 'bg-secondary text-light': tag == tags[0] }"
+            (click)="searchTag(tag)"
+          >
+            {{ tag | titlecase }}
+          </button>
+          <button
+            class="list-group-item bg-dark border-0"
+            (click)="deleteTag(tag)"
+          >
+            <i class="fa-solid fa-trash" style="color: #ffffff"></i>
+          </button>
+        </div>
+      </ng-container>
+    </div>
+    <hr class="text-white" />
 
-  <h3 class="text-light">GifsApp</h3>
-  <hr class="text-white">
-
-  <div class="list-group list-reset">
-  <button *ngFor="let tag of tags" class="list-group-item list-group-item-action"
-  (click)="searchTag(tag)">
-    {{tag | titlecase}}
-  </button>
-</div>
+    <div class="d-flex justify-content-center" *ngIf="tags.length">
+      <button class="btn btn-danger" (click)="deleteList()">
+        <i class="fa-solid fa-trash" style="color: #ffffff"></i>
+        Borrar historial
+      </button>
+    </div>
+  </div>
 </div>
